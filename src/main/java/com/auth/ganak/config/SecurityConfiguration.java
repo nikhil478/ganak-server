@@ -50,38 +50,48 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
-        http
-            .csrf()
-            .disable()
-            .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
-            .exceptionHandling()
-            .authenticationEntryPoint(problemSupport)
-            .accessDeniedHandler(problemSupport)
-        .and()
-            .headers()
-            .frameOptions()
-            .disable()
-        .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-            .authorizeRequests()
-            .antMatchers("/api/authenticate").permitAll()
-            .antMatchers("/api/register").permitAll()
-            .antMatchers("/api/activate").permitAll()
-            .antMatchers("/api/account/reset-password/init").permitAll()
-            .antMatchers("/api/account/reset-password/finish").permitAll()
-            .antMatchers("/api/**").authenticated()
-            .antMatchers("/management/health").permitAll()
-            .antMatchers("/management/info").permitAll()
-            .antMatchers("/management/prometheus").permitAll()
-            .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
-        .and()
-            .apply(securityConfigurerAdapter());
-        // @formatter:on
+    protected void configure(HttpSecurity http) throws Exception {
+        // Allow unauthenticated access to specific endpoints
+        http.authorizeRequests()
+                .antMatchers("/api/**").permitAll() // Replace with your public endpoints
+                .anyRequest().authenticated();
+
+        // Disable CSRF for simplicity (you can enable it in production)
+        http.csrf().disable();
     }
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//        // @formatter:off
+//        http
+//            .csrf()
+//            .disable()
+//            .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
+//            .exceptionHandling()
+//            .authenticationEntryPoint(problemSupport)
+//            .accessDeniedHandler(problemSupport)
+//        .and()
+//            .headers()
+//            .frameOptions()
+//            .disable()
+//        .and()
+//            .sessionManagement()
+//            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//        .and()
+//            .authorizeRequests()
+//            .antMatchers("/api/authenticate").permitAll()
+//            .antMatchers("/api/register").permitAll()
+//            .antMatchers("/api/activate").permitAll()
+//            .antMatchers("/api/account/reset-password/init").permitAll()
+//            .antMatchers("/api/account/reset-password/finish").permitAll()
+//            .antMatchers("/api/**").authenticated()
+//            .antMatchers("/management/health").permitAll()
+//            .antMatchers("/management/info").permitAll()
+//            .antMatchers("/management/prometheus").permitAll()
+//            .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+//        .and()
+//            .apply(securityConfigurerAdapter());
+//        // @formatter:on
+//    }
 
     private JWTConfigurer securityConfigurerAdapter() {
         return new JWTConfigurer(tokenProvider);
