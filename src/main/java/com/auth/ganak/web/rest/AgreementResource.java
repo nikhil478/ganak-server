@@ -2,6 +2,7 @@ package com.auth.ganak.web.rest;
 
 import com.auth.ganak.domain.Agreement;
 import com.auth.ganak.repository.AgreementRepository;
+import com.auth.ganak.service.JwtService;
 import com.auth.ganak.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -33,9 +34,11 @@ public class AgreementResource {
     private String applicationName;
 
     private final AgreementRepository agreementRepository;
+    private final JwtService jwtService;
 
-    public AgreementResource(AgreementRepository agreementRepository) {
+    public AgreementResource(AgreementRepository agreementRepository, JwtService jwtService) {
         this.agreementRepository = agreementRepository;
+        this.jwtService = jwtService;
     }
 
     /**
@@ -84,8 +87,9 @@ public class AgreementResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of agreements in body.
      */
     @GetMapping("/agreements")
-    public List<Agreement> getAllAgreements() {
+    public List<Agreement> getAllAgreements(@RequestHeader("Authorization") String token) {
         log.debug("REST request to get all Agreements");
+        jwtService.extractLoginIdFromToken(jwtService.extractJwtToken(token));
         return agreementRepository.findAll();
     }
 

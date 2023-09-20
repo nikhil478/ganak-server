@@ -3,6 +3,7 @@ package com.auth.ganak.web.rest;
 import com.auth.ganak.JhipsterApp;
 import com.auth.ganak.domain.Agreement;
 import com.auth.ganak.repository.AgreementRepository;
+import com.auth.ganak.service.JwtService;
 import com.auth.ganak.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -72,6 +73,9 @@ public class AgreementResourceIT {
     private AgreementRepository agreementRepository;
 
     @Autowired
+    private JwtService jwtService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -93,7 +97,7 @@ public class AgreementResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final AgreementResource agreementResource = new AgreementResource(agreementRepository);
+        final AgreementResource agreementResource = new AgreementResource(agreementRepository,jwtService);
         this.restAgreementMockMvc = MockMvcBuilders.standaloneSetup(agreementResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -221,7 +225,7 @@ public class AgreementResourceIT {
             .andExpect(jsonPath("$.[*].dateUpdated").value(hasItem(DEFAULT_DATE_UPDATED.toString())))
             .andExpect(jsonPath("$.[*].updatedById").value(hasItem(DEFAULT_UPDATED_BY_ID.intValue())));
     }
-    
+
     @Test
     @Transactional
     public void getAgreement() throws Exception {
