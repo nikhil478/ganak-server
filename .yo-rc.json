@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.auth.ganak"
+    },
+    "jhipsterVersion": "6.0.1",
+    "applicationType": "monolith",
+    "baseName": "jhipster",
+    "packageName": "com.auth.ganak",
+    "packageFolder": "com/auth/ganak",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "ZWNiY2RkNzBlZjU5YzdjZDA0NWIyYjA2MDc2MjcxMzBhOGYzMTRhOGRhZDM5NDIxNTJkNzdjZGFmZTRlNjk4OGUwNDdjNWY4ZGJhZmJlZmNkOTZjZGI1MjUwZTA0YmYyNmQxMmUzMmFkZDZlMmMwMDY2MjVkZGJiNGQ1N2RlMTE=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "skipClient": true
+  }
+}
