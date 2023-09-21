@@ -93,6 +93,17 @@ public class LoanResource {
     }
 
     /**
+     * {@code GET  /loans} : get all flagged loans.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of loans in body.
+     */
+    @GetMapping("/loans/flagged")
+    public List<Loan> getAllFlaggedLoans() {
+        log.debug("REST request to get all Loans");
+        return loanRepository.findAllFlaggedLoan();
+    }
+
+    /**
      * {@code GET  /loans/:id} : get the "id" loan.
      *
      * @param id the id of the loan to retrieve.

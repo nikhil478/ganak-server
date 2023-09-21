@@ -91,10 +91,20 @@ public class AgreementResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of agreements in body.
      */
     @GetMapping("/agreements")
-    public List<Agreement> getAllAgreements(@RequestHeader("Authorization") String token) {
+    public List<Agreement> getAllAgreements() {
         log.debug("REST request to get all Agreements");
-        jwtService.extractLoginIdFromToken(jwtService.extractJwtToken(token));
         return agreementRepository.findAll();
+    }
+
+    /**
+     * {@code GET  /agreements} : get all flagged agreements.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of agreements in body.
+     */
+    @GetMapping("/agreements/flagged")
+    public List<Agreement> getAllFlaggedAgreements() {
+        log.debug("REST request to get all Agreements");
+        return agreementRepository.findAllFlaggedAgreement();
     }
 
     /**
