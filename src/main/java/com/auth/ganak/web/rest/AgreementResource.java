@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +57,7 @@ public class AgreementResource {
             throw new BadRequestAlertException("A new agreement cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Agreement result = agreementRepository.save(agreement);
+        agreement.setDateCreated(LocalDate.now());
         return ResponseEntity.created(new URI("/api/agreements/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -75,6 +78,7 @@ public class AgreementResource {
         if (agreement.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        agreement.setDateUpdated(LocalDate.now());
         Agreement result = agreementRepository.save(agreement);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, agreement.getId().toString()))

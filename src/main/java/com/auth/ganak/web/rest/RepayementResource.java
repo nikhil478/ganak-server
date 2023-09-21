@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,7 @@ public class RepayementResource {
         if (repayement.getId() != null) {
             throw new BadRequestAlertException("A new repayement cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        repayement.setDateCreated(LocalDate.now());
         Repayement result = repayementRepository.save(repayement);
         return ResponseEntity.created(new URI("/api/repayements/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
@@ -72,6 +74,7 @@ public class RepayementResource {
         if (repayement.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        repayement.setDateUpdated(LocalDate.now());
         Repayement result = repayementRepository.save(repayement);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, repayement.getId().toString()))
