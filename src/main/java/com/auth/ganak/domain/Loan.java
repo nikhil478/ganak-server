@@ -54,6 +54,17 @@ public class Loan implements Serializable {
     @Column(name = "zkp_code")
     private String zkpCode;
 
+    @Column(name = "flag")
+    private Boolean flag;
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
     @Column(name = "date_created")
     private LocalDate dateCreated;
 
@@ -313,20 +324,21 @@ public class Loan implements Serializable {
     @Override
     public String toString() {
         return "Loan{" +
-            "id=" + getId() +
-            ", loaneeName='" + getLoaneeName() + "'" +
-            ", dob=" + getDob() +
-            ", address='" + getAddress() + "'" +
-            ", contact='" + getContact() + "'" +
-            ", disbursementDate='" + getDisbursementDate() + "'" +
-            ", loanAmount=" + getLoanAmount() +
-            ", loanTenure=" + getLoanTenure() +
-            ", interestRate=" + getInterestRate() +
-            ", zkpCode='" + getZkpCode() + "'" +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", createdById=" + getCreatedById() +
-            ", dateUpdated='" + getDateUpdated() + "'" +
-            ", updatedById=" + getUpdatedById() +
-            "}";
+                "id=" + id +
+                ", loaneeName='" + loaneeName + '\'' +
+                ", dob=" + dob +
+                ", address='" + address + '\'' +
+                ", contact='" + contact + '\'' +
+                ", disbursementDate=" + disbursementDate +
+                ", loanAmount=" + loanAmount +
+                ", loanTenure=" + loanTenure +
+                ", interestRate=" + interestRate +
+                ", zkpCode='" + zkpCode + '\'' +
+                ", flag=" + flag +
+                ", dateCreated=" + dateCreated +
+                ", createdById=" + createdById +
+                ", dateUpdated=" + dateUpdated +
+                ", updatedById=" + updatedById +
+                '}';
     }
 }

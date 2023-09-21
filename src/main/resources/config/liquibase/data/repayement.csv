@@ -1,11 +1,11 @@
-id;repayement_amount;repayement_date;outstanding_balance;repayement_status;zkp_code;date_created;created_by_id;date_updated;updated_by_id
-1;37454;2023-09-19T21:02:38;95071;application;Savings Account Dam;2023-09-20T13:45:41;5808;2023-09-20T05:08:20;86617
-2;33370;2023-09-20T01:44:03;14286;deposit Tasty Metal Bacon Implementation;Chips;2023-09-20T11:45:33;61748;2023-09-20T08:51:33;61165
-3;52475;2023-09-20T15:59:28;43194;intangible;enable Gorgeous Frozen Pants;2023-09-20T10:34:28;45606;2023-09-20T13:59:11;78517
-4;61838;2023-09-20T11:22:07;38246;Planner Canyon;Credit Card Account Table Small Frozen Sausages;2023-09-19T16:59:09;56328;2023-09-19T20:45:34;38541
-5;30461;2023-09-20T15:46:39;9767;Nakfa;Bahamian Dollar Investment Account;2023-09-19T20:09:52;3438;2023-09-20T12:00:00;90932
-6;39106;2023-09-20T09:57:01;18223;copy convergence;Mayotte;2023-09-20T11:43:28;3131;2023-09-19T16:53:28;84228
-7;77513;2023-09-20T05:22:01;93949;Chief Credit Card Account;archive Georgia Aruba;2023-09-19T17:05:35;32533;2023-09-19T19:53:32;38867
-8;74732;2023-09-20T09:38:55;53969;Louisiana Specialist Home Loan Account;Plastic;2023-09-19T20:54:30;16526;2023-09-20T14:22:18;1563
-9;98688;2023-09-20T05:59:57;77224;orange Books;magenta monitor 1080p;2023-09-20T01:37:05;7404;2023-09-19T17:55:47;35846
-10;65107;2023-09-20T13:22:48;91495;generating Highway Ergonomic;moratorium moratorium;2023-09-19T22:39:02;59129;2023-09-20T00:51:35;27472
+id;repayement_amount;repayement_date;outstanding_balance;repayement_status;zkp_code;date_created;created_by_id;date_updated;updated_by_id;flag
+1;37454;2023-09-19T21:02:38;95071;application;Savings Account Dam;2023-09-20T13:45:41;5808;2023-09-20T05:08:20;86617;false
+2;33370;2023-09-20T01:44:03;14286;deposit Tasty Metal Bacon Implementation;Chips;2023-09-20T11:45:33;61748;2023-09-20T08:51:33;61165;true
+3;52475;2023-09-20T15:59:28;43194;intangible;enable Gorgeous Frozen Pants;2023-09-20T10:34:28;45606;2023-09-20T13:59:11;78517;false
+4;61838;2023-09-20T11:22:07;38246;Planner Canyon;Credit Card Account Table Small Frozen Sausages;2023-09-19T16:59:09;56328;2023-09-19T20:45:34;38541;true
+5;30461;2023-09-20T15:46:39;9767;Nakfa;Bahamian Dollar Investment Account;2023-09-19T20:09:52;3438;2023-09-20T12:00:00;90932;false
+6;39106;2023-09-20T09:57:01;18223;copy convergence;Mayotte;2023-09-20T11:43:28;3131;2023-09-19T16:53:28;84228;true
+7;77513;2023-09-20T05:22:01;93949;Chief Credit Card Account;archive Georgia Aruba;2023-09-19T17:05:35;32533;2023-09-19T19:53:32;38867;true
+8;74732;2023-09-20T09:38:55;53969;Louisiana Specialist Home Loan Account;Plastic;2023-09-19T20:54:30;16526;2023-09-20T14:22:18;1563;false
+9;98688;2023-09-20T05:59:57;77224;orange Books;magenta monitor 1080p;2023-09-20T01:37:05;7404;2023-09-19T17:55:47;35846;true
+10;65107;2023-09-20T13:22:48;91495;generating Highway Ergonomic;moratorium moratorium;2023-09-19T22:39:02;59129;2023-09-20T00:51:35;27472;false

@@ -50,6 +50,9 @@ public class Agreement implements Serializable {
     @Column(name = "date_created")
     private LocalDate dateCreated;
 
+    @Column(name = "flag")
+    private Boolean flag;
+
     @Column(name = "created_by_id")
     private Long createdById;
 
@@ -260,21 +263,30 @@ public class Agreement implements Serializable {
         return 31;
     }
 
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
     @Override
     public String toString() {
         return "Agreement{" +
-            "id=" + getId() +
-            ", fintechName='" + getFintechName() + "'" +
-            ", agreementDate='" + getAgreementDate() + "'" +
-            ", fldgPerecentage=" + getFldgPerecentage() +
-            ", fldgAmount=" + getFldgAmount() +
-            ", guaranteeType='" + getGuaranteeType() + "'" +
-            ", guaranteeDetails='" + getGuaranteeDetails() + "'" +
-            ", agreementNo='" + getAgreementNo() + "'" +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", createdById=" + getCreatedById() +
-            ", dateUpdated='" + getDateUpdated() + "'" +
-            ", updatedById=" + getUpdatedById() +
-            "}";
+                "id=" + id +
+                ", fintechName='" + fintechName + '\'' +
+                ", agreementDate=" + agreementDate +
+                ", fldgPerecentage=" + fldgPerecentage +
+                ", fldgAmount=" + fldgAmount +
+                ", guaranteeType='" + guaranteeType + '\'' +
+                ", guaranteeDetails='" + guaranteeDetails + '\'' +
+                ", agreementNo='" + agreementNo + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", flag=" + flag +
+                ", createdById=" + createdById +
+                ", dateUpdated=" + dateUpdated +
+                ", updatedById=" + updatedById +
+                '}';
     }
 }

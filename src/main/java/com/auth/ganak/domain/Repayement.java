@@ -39,6 +39,9 @@ public class Repayement implements Serializable {
     @Column(name = "zkp_code")
     private String zkpCode;
 
+    @Column(name = "flag")
+    private Boolean flag;
+
     @Column(name = "date_created")
     private LocalDate dateCreated;
 
@@ -114,6 +117,14 @@ public class Repayement implements Serializable {
     public Repayement repayementStatus(String repayementStatus) {
         this.repayementStatus = repayementStatus;
         return this;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
     }
 
     public void setRepayementStatus(String repayementStatus) {
@@ -218,16 +229,17 @@ public class Repayement implements Serializable {
     @Override
     public String toString() {
         return "Repayement{" +
-            "id=" + getId() +
-            ", repayementAmount=" + getRepayementAmount() +
-            ", repayementDate='" + getRepayementDate() + "'" +
-            ", outstandingBalance=" + getOutstandingBalance() +
-            ", repayementStatus='" + getRepayementStatus() + "'" +
-            ", zkpCode='" + getZkpCode() + "'" +
-            ", dateCreated='" + getDateCreated() + "'" +
-            ", createdById=" + getCreatedById() +
-            ", dateUpdated='" + getDateUpdated() + "'" +
-            ", updatedById=" + getUpdatedById() +
-            "}";
+                "id=" + id +
+                ", repayementAmount=" + repayementAmount +
+                ", repayementDate=" + repayementDate +
+                ", outstandingBalance=" + outstandingBalance +
+                ", repayementStatus='" + repayementStatus + '\'' +
+                ", zkpCode='" + zkpCode + '\'' +
+                ", flag=" + flag +
+                ", dateCreated=" + dateCreated +
+                ", createdById=" + createdById +
+                ", dateUpdated=" + dateUpdated +
+                ", updatedById=" + updatedById +
+                '}';
     }
 }

@@ -55,6 +55,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="flag" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
 
@@ -84,6 +88,7 @@
             <column name="created_by_id" type="numeric"/>
             <column name="date_updated" type="date"/>
             <column name="updated_by_id" type="numeric"/>
+            <column name="flag" type="boolean"/>
         </loadData>
     </changeSet>
 
