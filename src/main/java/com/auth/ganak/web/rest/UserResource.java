@@ -4,6 +4,7 @@ import com.auth.ganak.config.Constants;
 import com.auth.ganak.domain.User;
 import com.auth.ganak.repository.UserRepository;
 import com.auth.ganak.security.AuthoritiesConstants;
+import com.auth.ganak.service.JwtService;
 import com.auth.ganak.service.MailService;
 import com.auth.ganak.service.UserService;
 import com.auth.ganak.service.dto.UserDTO;
@@ -70,13 +71,16 @@ public class UserResource {
 
     private final UserRepository userRepository;
 
+    private final JwtService jwtService;
+
     private final MailService mailService;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
+    public UserResource(UserService userService,JwtService jwtService, UserRepository userRepository, MailService mailService) {
 
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
+        this.jwtService = jwtService;
     }
 
     /**
@@ -148,6 +152,18 @@ public class UserResource {
         final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
+     * {@code GET /users} : get user info by jwtToken.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body all users.
+     */
+    @GetMapping("/user")
+    public ResponseEntity<UserDTO> getUserInfo(@RequestHeader("Authorization") String token) {
+//        User user = userRepository.findOneWithAuthoritiesByLogin().get();
+//        return ResponseEntity.ok().body(user);
+        return getUser(jwtService.extractLoginIdFromToken(jwtService.extractJwtToken(token)));
     }
 
     /**

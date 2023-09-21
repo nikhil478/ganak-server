@@ -5,6 +5,7 @@ import com.auth.ganak.domain.Authority;
 import com.auth.ganak.domain.User;
 import com.auth.ganak.repository.UserRepository;
 import com.auth.ganak.security.AuthoritiesConstants;
+import com.auth.ganak.service.JwtService;
 import com.auth.ganak.service.MailService;
 import com.auth.ganak.service.UserService;
 import com.auth.ganak.service.dto.UserDTO;
@@ -69,6 +70,9 @@ public class UserResourceIT {
     private MailService mailService;
 
     @Autowired
+    private JwtService jwtService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
@@ -92,7 +96,7 @@ public class UserResourceIT {
 
     @BeforeEach
     public void setup() {
-        UserResource userResource = new UserResource(userService, userRepository, mailService);
+        UserResource userResource = new UserResource(userService,jwtService, userRepository, mailService);
 
         this.restUserMockMvc = MockMvcBuilders.standaloneSetup(userResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
