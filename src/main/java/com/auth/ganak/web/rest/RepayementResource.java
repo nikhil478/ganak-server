@@ -93,6 +93,17 @@ public class RepayementResource {
     }
 
     /**
+     * {@code GET  /repayements} : get all flagged repayements.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of repayements in body.
+     */
+    @GetMapping("/repayements/flagged")
+    public List<Repayement> getAllFlaggedRepayements() {
+        log.debug("REST request to get all Repayements");
+        return repayementRepository.findAllFlaggedRepayement();
+    }
+
+    /**
      * {@code GET  /repayements/:id} : get the "id" repayement.
      *
      * @param id the id of the repayement to retrieve.
